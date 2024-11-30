@@ -1,0 +1,524 @@
+[
+  {
+    "id": 1,
+    "name": "Algebra I (anual)",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": null,
+    "aprobadas": null
+  },
+  {
+    "id": 2,
+    "name": "Fundamentos de la Programación (Anual)",
+    "weeklyHours": 6,
+    "totalHours": 90,
+    "regulares": null,
+    "aprobadas": null
+  },
+  {
+    "id": 3,
+    "name": "Lógica I",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": null,
+    "aprobadas": null
+  },
+  {
+    "id": 4,
+    "name": "Análisis I (anual)",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": null,
+    "aprobadas": null
+  },
+  {
+    "id": 5,
+    "name": "Taller de Comunicación Técnico-Científica",
+    "weeklyHours": 3,
+    "totalHours": 45,
+    "regulares": null,
+    "aprobadas": null
+  },
+  {
+    "id": 6,
+    "name": "Inglés I",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      5
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 7,
+    "name": "Estructuras de Datos y Programación I",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      1,
+      2
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 8,
+    "name": "Organización del Computador",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      1,
+      2,
+      3
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 9,
+    "name": "Algebra II",
+    "weeklyHours": 6,
+    "totalHours": 90,
+    "regulares": [
+      1,
+      3,
+      4
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 10,
+    "name": "Teoría de Sistemas y Organizaciones",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      2,
+      5
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 11,
+    "name": "Estructuras de Datos y Programación II",
+    "weeklyHours": 6,
+    "totalHours": 90,
+    "regulares": [
+      6,
+      7,
+      8
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 12,
+    "name": "Arquitectura del Computador",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      6,
+      8
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 13,
+    "name": "Análisis II",
+    "weeklyHours": 6,
+    "totalHours": 90,
+    "regulares": [
+      9
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 14,
+    "name": "Lógica II",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      6,
+      3
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 15,
+    "name": "Métodos numéricos",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      11,
+      13
+    ],
+    "aprobadas": [
+      4
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Bases de Datos I",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      6,
+      11
+    ],
+    "aprobadas": [
+      2,
+      5
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Probabilidad y Estadística",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      13
+    ],
+    "aprobadas": [
+      9
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Sistemas Operativos",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      11,
+      12
+    ],
+    "aprobadas": [
+      8
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Teoría de la Computación",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      6,
+      11,
+      14
+    ],
+    "aprobadas": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Sistemas de Información I",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      16
+    ],
+    "aprobadas": [
+      10
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Investigación Operativa",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      17
+    ],
+    "aprobadas": [
+      2
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Redes I",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      18
+    ],
+    "aprobadas": [
+      12
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Programacion Lógica y Funcional",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      11,
+      13,
+      14
+    ],
+    "aprobadas": [
+      7
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Inglés II",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": null,
+    "aprobadas": [
+      6
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Sistemas de Información II",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      20
+    ],
+    "aprobadas": [
+      16
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Inglés III",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      24
+    ],
+    "aprobadas": null
+  },
+  {
+    "id": 27,
+    "name": "Inteligencia Artificial",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      17,
+      20,
+      23
+    ],
+    "aprobadas": [
+      14
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Seminario de Aspectos Profesionales I",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      20
+    ],
+    "aprobadas": [
+      5
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Redes II",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      22
+    ],
+    "aprobadas": [
+      18
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Administración de los Sistemas de Información",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      25
+    ],
+    "aprobadas": [
+      21
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Ingeniería del Software",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      26
+    ],
+    "aprobadas": [
+      20
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Lenguajes de Programación y Compiladores",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      26
+    ],
+    "aprobadas": [
+      19
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Sistemas Operativos Distribuidos",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      26,
+      29
+    ],
+    "aprobadas": [
+      24
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Simulación",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      21,
+      25
+    ],
+    "aprobadas": [
+      11,
+      13,
+      17
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Metodología de la Investigación I",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      30,
+      31,
+      26
+    ],
+    "aprobadas": [
+      25
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Seminario de Aspectos Profesionales II",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      28
+    ],
+    "aprobadas": [
+      20
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Programación Avanzada",
+    "weeklyHours": 6,
+    "totalHours": 90,
+    "regulares": [
+      32,
+      33
+    ],
+    "aprobadas": [
+      22,
+      23
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Ingeniería Web",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      31,
+      26
+    ],
+    "aprobadas": [
+      25
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Práctica Profesional Supervisada",
+    "weeklyHours": null,
+    "totalHours": 200,
+    "regulares": [
+      26,
+      28,
+      29,
+      30,
+      31
+    ],
+    "aprobadas": [
+      15,
+      25
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Sistemas de Información III",
+    "weeklyHours": 6,
+    "totalHours": 90,
+    "regulares": [
+      33,
+      37,
+      26
+    ],
+    "aprobadas": [
+      25
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Metodología de la Investigación II",
+    "weeklyHours": 4,
+    "totalHours": 60,
+    "regulares": [
+      35
+    ],
+    "aprobadas": [
+      27
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Base de Datos II",
+    "weeklyHours": 5,
+    "totalHours": 75,
+    "regulares": [
+      26
+    ],
+    "aprobadas": [
+      25,
+      27
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Electiva(CRIPTOGRAFÍA; INFORMÁTICA EDUCATIVA; INTERACCION HOMBRE –COMPUTADOR; Organizaciones Digitales)",
+    "weeklyHours": null,
+    "totalHours": 120,
+    "regulares": [
+      25,
+      26,
+      29
+    ],
+    "aprobadas": [
+      20
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Trabajo Final",
+    "weeklyHours": null,
+    "totalHours": 240,
+    "regulares": null,
+    "aprobadas": null
+  }
+]
