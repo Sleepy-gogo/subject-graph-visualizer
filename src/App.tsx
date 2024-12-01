@@ -1,5 +1,5 @@
-import Dagre from '@dagrejs/dagre';
-import { useCallback, useEffect, useState } from 'react';
+import ELK, { LayoutOptions } from 'elkjs/lib/elk.bundled.js';
+import { useCallback, useEffect } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -23,6 +23,8 @@ const edgeTypes = {
   floating: FloatingEdge
 };
 
+const elk = new ELK();
+
 interface Materia {
   id: number;
   name: string;
@@ -32,114 +34,105 @@ interface Materia {
   aprobadas: number[] | null;
 }
 
-const getLayoutedElements = (
-  nodes: Node[],
-  edges: Edge[],
-  options: { direction: 'TB' | 'LR' }
-) => {
-  const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
-  g.setGraph({ rankdir: options.direction });
+const useLayoutedElements = () => {
+  const { setNodes, fitView } = useReactFlow();
+  const defaultOptions = {
+    'elk.algorithm': 'layered',
+    'elk.layered.spacing.nodeNodeBetweenLayers': '150',
+    'elk.spacing.nodeNode': '180'
+  };
 
-  edges.forEach((edge) => g.setEdge(edge.source, edge.target));
-  nodes.forEach((node) =>
-    g.setNode(node.id, {
-      ...node,
-      width: (node.measured?.width ?? 0) + 150,
-      height: (node.measured?.height ?? 0) + 120
-    })
+  const getLayoutedElements = useCallback(
+    (options: LayoutOptions, nodes: Node[], edges: Edge[]) => {
+      const layoutOptions: LayoutOptions = { ...defaultOptions, ...options };
+      const graph = {
+        id: 'root',
+        layoutOptions: layoutOptions,
+        children: nodes.map((node) => ({
+          ...node,
+          width: node.measured?.width ?? 200,
+          height: node.measured?.height ?? 100
+        })),
+        edges: edges
+      };
+
+      elk.layout(graph).then(({ children }) => {
+        // By mutating the children in-place we saves ourselves from creating a
+        // needless copy of the nodes array.
+        children?.forEach((node) => {
+          node.position = { x: node.x, y: node.y };
+        });
+
+        setNodes(children);
+        window.requestAnimationFrame(() => {
+          fitView();
+        });
+      });
+    },
+    []
   );
 
-  Dagre.layout(g);
+  return { getLayoutedElements };
+};
 
-  return {
-    nodes: nodes.map((node, index) => {
-      const position = g.node(node.id);
-      // We are shifting the dagre node position (anchor=center center) to the top left
-      // so it matches the React Flow node anchor point (top left).
-      const x = position.x - (node.measured?.width ?? 0) + 20 * index;
-      const y = position.y - (node.measured?.height ?? 0) + 20 * index;
+const convertJsonToGraph = (jsonData: Materia[]) => {
+  const nodes: Node[] = jsonData.map((materia, index) => ({
+    id: materia.id.toString(),
+    position: { x: 100 * index, y: 100 * index },
+    data: {
+      label: materia.name,
+      regulares: materia.regulares,
+      aprobadas: materia.aprobadas
+    }
+  }));
 
-      return { ...node, position: { x, y } };
-    }),
-    edges
-  };
+  const edges: Edge[] = [];
+  jsonData.forEach((materia) => {
+    if (materia.regulares) {
+      materia.regulares.forEach((regularId) => {
+        edges.push({
+          id: `${materia.id}-${regularId}`,
+          target: materia.id.toString(),
+          source: regularId.toString(),
+          type: 'floating',
+          markerEnd: { type: MarkerType.Arrow },
+          animated: true,
+          style: { stroke: '#b5b5b580' }
+        });
+      });
+    }
+    if (materia.aprobadas) {
+      materia.aprobadas.forEach((aprobadaId) => {
+        edges.push({
+          id: `${materia.id}-${aprobadaId}`,
+          source: aprobadaId.toString(),
+          target: materia.id.toString(),
+          type: 'smoothstep',
+          markerEnd: { type: MarkerType.Arrow },
+          style: { stroke: 'aqua' }
+        });
+      });
+    }
+  });
+  return { nodes, edges };
 };
 
 export default function App() {
-  const { fitView } = useReactFlow();
-  const [unsortedNodes, setUnsortedNodes] = useState<Node[]>([]);
-  const [unsortedEdges, setUnsortedEdges] = useState<Edge[]>([]);
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [nodes, , onNodesChange] = useNodesState<Node>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
-
-  const onLayout = useCallback(
-    (direction: 'TB' | 'LR') => {
-      console.log(nodes);
-      const layouted = getLayoutedElements(unsortedNodes, unsortedEdges, {
-        direction
-      });
-
-      setNodes([...layouted.nodes]);
-      setEdges([...layouted.edges]);
-
-      window.requestAnimationFrame(() => {
-        fitView();
-      });
-    },
-    [nodes, edges]
-  );
-
-  const convertJsonToGraph = (jsonData: Materia[]) => {
-    const nodes: Node[] = jsonData.map((materia, index) => ({
-      id: materia.id.toString(), // Reactflow necesita IDs como string
-      position: { x: 100 * index, y: 100 * index }, // Posición inicial, luego puedes usar un layout
-      data: {
-        label: materia.name,
-        regulares: materia.regulares,
-        aprobadas: materia.aprobadas
-      } // Mostrar el ID como etiqueta
-    }));
-
-    const edges: Edge[] = [];
-    jsonData.forEach((materia) => {
-      if (materia.regulares) {
-        materia.regulares.forEach((regularId) => {
-          edges.push({
-            id: `${materia.id}-${regularId}`,
-            target: materia.id.toString(),
-            source: regularId.toString(),
-            type: 'floating',
-            markerEnd: { type: MarkerType.Arrow },
-            animated: true,
-            style: { stroke: '#b5b5b580' }
-          });
-        });
-      }
-      if (materia.aprobadas) {
-        materia.aprobadas.forEach((aprobadaId) => {
-          edges.push({
-            id: `${materia.id}-${aprobadaId}`,
-            source: aprobadaId.toString(),
-            target: materia.id.toString(),
-            type: 'smoothstep',
-            markerEnd: { type: MarkerType.Arrow },
-            style: { stroke: 'aqua' } // Puedes diferenciar visualmente las conexiones
-          });
-        });
-      }
-    });
-
-    setUnsortedNodes(nodes);
-    setUnsortedEdges(edges);
-  };
+  const { getLayoutedElements } = useLayoutedElements();
 
   useEffect(() => {
-    convertJsonToGraph(data);
+    const { nodes, edges } = convertJsonToGraph(data);
+    getLayoutedElements(
+      {
+        'elk.algorithm': 'layered'
+      },
+      nodes,
+      edges
+    );
+    setEdges(edges);
   }, []);
-
-  useEffect(() => {
-    onLayout('TB');
-  }, [unsortedNodes, unsortedEdges]);
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>

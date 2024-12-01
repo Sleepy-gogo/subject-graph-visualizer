@@ -76,13 +76,13 @@
 }
 
 .react-flow__edge.selectable .react-flow__edge-path {
-  stroke-width: 3px;
+  stroke-width: 4px;
 }
 
 .react-flow__edge.selectable:hover .react-flow__edge-path,
 .react-flow__edge.selectable.selected .react-flow__edge-path {
   stroke: var(--xy-theme-edge-hover) !important;
-  stroke-width: 4px;
+  stroke-width: 6px;
 }
 
 .react-flow__node-resizer {
