@@ -1,6 +1,6 @@
 import { ConnectionLineComponentProps, getSmoothStepPath } from '@xyflow/react';
 
-import { getEdgeParams } from './utils.ts';
+import { getEdgeParams } from '../lib/utils.ts';
 
 function FloatingConnectionLine({
   toX,
@@ -15,12 +15,16 @@ function FloatingConnectionLine({
 
   const targetNode = {
     id: 'connection-target',
+    position: { x: toX, y: toY },
+    data: {},
     measured: {
       width: 1,
       height: 1
     },
     internals: {
-      positionAbsolute: { x: toX, y: toY }
+      positionAbsolute: { x: toX, y: toY },
+      z: 0,
+      userNode: fromNode
     }
   };
 
