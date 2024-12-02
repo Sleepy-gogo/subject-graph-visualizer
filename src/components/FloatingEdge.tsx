@@ -1,6 +1,6 @@
 import { EdgeComponentProps, useInternalNode } from '@xyflow/react';
 
-import { getEdgeParams } from '../lib/utils.ts';
+import { getEdgeParams } from '@/lib/utils.ts';
 import { EdgeBase, getSmoothStepPath } from '@xyflow/system';
 
 function FloatingEdge({

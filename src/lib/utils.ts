@@ -1,12 +1,15 @@
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { Position, InternalNode } from '@xyflow/react';
 
-// this helper function returns the intersection point
-// of the line between the center of the intersectionNode and the target node
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 function getNodeIntersection(
   intersectionNode: InternalNode,
   targetNode: InternalNode
 ) {
-  // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
   const { width: intersectionNodeWidth, height: intersectionNodeHeight } =
     intersectionNode.measured;
   const intersectionNodePosition = intersectionNode.internals.positionAbsolute;
@@ -31,7 +34,6 @@ function getNodeIntersection(
   return { x, y };
 }
 
-// returns the position (top,right,bottom or right) passed node compared to the intersection point
 function getEdgePosition(
   node: InternalNode,
   intersectionPoint: { x: number; y: number }
@@ -58,7 +60,6 @@ function getEdgePosition(
   return Position.Top;
 }
 
-// returns the parameters (sx, sy, tx, ty, sourcePos, targetPos) you need to create an edge
 export function getEdgeParams(source: InternalNode, target: InternalNode) {
   const sourceIntersectionPoint = getNodeIntersection(source, target);
   const targetIntersectionPoint = getNodeIntersection(target, source);

@@ -1,6 +1,6 @@
 import { ConnectionLineComponentProps, getSmoothStepPath } from '@xyflow/react';
 
-import { getEdgeParams } from '../lib/utils.ts';
+import { getEdgeParams } from '@/lib/utils.ts';
 
 function FloatingConnectionLine({
   toX,
