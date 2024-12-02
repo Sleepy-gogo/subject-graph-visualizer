@@ -11,15 +11,20 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-import FloatingEdge from './components/FloatingEdge';
-import FloatingConnectionLine from './components/FloatingConnectionLine';
+import FloatingEdge from '@/components/FloatingEdge';
+import FloatingConnectionLine from '@/components/FloatingConnectionLine';
 
-import data from './Licenciatura en Sistemas de Información.json';
-import convertJsonToGraph from './lib/jsonToData';
-import useLayoutedElements from './hooks/useLayoutedElems';
+import data from '@/Licenciatura en Sistemas de Información.json';
+import convertJsonToGraph from '@/lib/jsonToData';
+import useLayoutedElements from '@/hooks/useLayoutedElems';
+import { TooltipNode } from '@/components/tooltip-node';
 
 const edgeTypes = {
   floating: FloatingEdge
+};
+
+const nodeTypes = {
+  tooltip: TooltipNode
 };
 
 export default function App() {
@@ -52,6 +57,7 @@ export default function App() {
         zoomOnScroll
         colorMode="dark"
         edgeTypes={edgeTypes}
+        nodeTypes={nodeTypes}
         connectionLineComponent={FloatingConnectionLine}
       >
         <Background variant={BackgroundVariant.Dots} gap={32} size={1} />

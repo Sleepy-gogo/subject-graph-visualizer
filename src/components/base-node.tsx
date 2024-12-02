@@ -1,5 +1,5 @@
-import React from "react";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { cn } from '@/lib/utils';
 
 export const BaseNode = React.forwardRef<
   HTMLDivElement,
@@ -8,12 +8,11 @@ export const BaseNode = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-md border border-neutral-200 bg-white p-5 text-neutral-950 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+      'w-full h-full flex items-center justify-center font-medium transition-all text-sm break-words',
       className,
-      selected ? "border-neutral-500 shadow-lg dark:border-neutral-400" : "",
-      "hover:ring-1",
+      selected ? 'font-bold' : ''
     )}
     {...props}
   />
 ));
-BaseNode.displayName = "BaseNode";
+BaseNode.displayName = 'BaseNode';

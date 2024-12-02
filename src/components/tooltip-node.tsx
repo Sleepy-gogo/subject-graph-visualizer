@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Node,
   NodeProps,
   NodeToolbar,
   NodeToolbarProps,
   Handle,
-  Position,
-} from "@xyflow/react";
-import { BaseNode } from "@/components/base-node";
+  Position
+} from '@xyflow/react';
+import { BaseNode } from '@/components/base-node';
 
 export type TooltipNodeType = Node<{
   label: string;
   tooltip?: {
     label: string;
-    position?: NodeToolbarProps["position"];
+    position?: NodeToolbarProps['position'];
   };
 }>;
 
@@ -28,7 +28,7 @@ export function TooltipNode({ data, selected }: NodeProps<TooltipNodeType>) {
     >
       <NodeToolbar
         isVisible={isTooltipVisible || selected}
-        className="rounded-sm bg-neutral-900 p-2 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900"
+        className="p-2 rounded-sm bg-neutral-900 text-neutral-50 ring-1 dark:ring-neutral-50/50 dark:bg-neutral-800 dark:text-neutral-50"
         position={data.tooltip?.position}
       >
         {data.tooltip?.label}

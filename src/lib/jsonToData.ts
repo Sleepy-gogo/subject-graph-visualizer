@@ -1,4 +1,4 @@
-import { Edge, MarkerType, Node } from '@xyflow/react';
+import { Edge, MarkerType, Node, Position } from '@xyflow/react';
 
 export interface Materia {
   id: number;
@@ -15,9 +15,12 @@ export default function convertJsonToGraph(jsonData: Materia[]) {
     position: { x: 100 * index, y: 100 * index },
     data: {
       label: materia.name,
-      regulares: materia.regulares,
-      aprobadas: materia.aprobadas
-    }
+      tooltip: {
+        label: `Horas semanales: ${materia.weeklyHours}\nHoras totales: ${materia.totalHours}`,
+        position: Position.Top
+      }
+    },
+    type: 'tooltip'
   }));
 
   const edges: Edge[] = [];
