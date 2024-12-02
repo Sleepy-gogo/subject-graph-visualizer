@@ -1,4 +1,4 @@
-import ELK, { LayoutOptions } from 'elkjs/lib/elk.bundled.js';
+import ELK, { ElkExtendedEdge, LayoutOptions } from 'elkjs/lib/elk.bundled.js';
 import { useCallback, useEffect } from 'react';
 import {
   ReactFlow,
@@ -57,8 +57,6 @@ const useLayoutedElements = () => {
       };
 
       elk.layout(graph).then(({ children }) => {
-        // By mutating the children in-place we saves ourselves from creating a
-        // needless copy of the nodes array.
         children?.forEach((node) => {
           node.position = { x: node.x, y: node.y };
         });
@@ -95,7 +93,7 @@ const convertJsonToGraph = (jsonData: Materia[]) => {
           target: materia.id.toString(),
           source: regularId.toString(),
           type: 'floating',
-          markerEnd: { type: MarkerType.Arrow },
+          markerEnd: { type: MarkerType.Arrow, color: '#b5b5b580' },
           animated: true,
           style: { stroke: '#b5b5b580' }
         });
@@ -107,8 +105,8 @@ const convertJsonToGraph = (jsonData: Materia[]) => {
           id: `${materia.id}-${aprobadaId}`,
           source: aprobadaId.toString(),
           target: materia.id.toString(),
-          type: 'smoothstep',
-          markerEnd: { type: MarkerType.Arrow },
+          type: 'floating',
+          markerEnd: { type: MarkerType.Arrow, color: 'aqua' },
           style: { stroke: 'aqua' }
         });
       });
@@ -126,7 +124,9 @@ export default function App() {
     const { nodes, edges } = convertJsonToGraph(data);
     getLayoutedElements(
       {
-        'elk.algorithm': 'layered'
+        'elk.algorithm': 'org.eclipse.elk.stress',
+        'elk.spacing.nodeNode': '480',
+        'elk.stress.desiredEdgeLength': '700'
       },
       nodes,
       edges
